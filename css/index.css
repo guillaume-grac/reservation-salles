@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 *{
     margin: 0;
@@ -11,88 +12,109 @@ html{
     scroll-behavior: smooth;
 }
 
+body{
+    background-color: #e6fcfb;
+}
+
 /* Header */
 
+nav{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 header{
-    box-shadow: black 0px 3px 5px;
-    height: 15%;
+    box-shadow: black 0px 5px 7px;
 }
 
 .title-princ,
 .title-princ b{
     text-shadow: black 1px 2px 1px;
     font-family: 'Satisfy', cursive;
-    color: #F09421;
+    color: #b5d9dd;
     margin-left: auto;
     font-size: 60px;  
 }
 
 li a{
-    text-shadow: #F09421 1px 1px 0px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: #000000 2px 1px 0px;
     font-weight: bold;
-    color: #000000;
-    transition: all 0.2s ease 0.2s;
+    color: #b5d9dd;
+    transition: all 0.3s ease 0.3s;
 }
 
 li a:hover{
-    text-shadow: #000000 1px 1px 0px;
-    color: #F09421;
+    color: #ffffff;
+}
+
+.header-anim{
+    position: relative;
+    overflow :hidden;
+    height: 20vw;
+    min-height: 400px;
+    max-height: 550px;
+    min-width: 300px;
+    color: #eee;
+}
+
+.header-anim:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.12) 40%,rgba(27,32,48,1) 100%);
+}
+
+.header-anim:before{
+    content: "";
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0); backface-visibility: hidden;
+    scale: (1.0, 1.0);
+    transform: translateZ(0);
+    background: #1B2030 url(../images/salle-bg2.jpg) 50% 0 no-repeat;
+    background-size: 100%;
+    background-attachment:fixed;
+    animation: grow 60s  linear 10ms infinite;
+    transition:all 0.4s ease-in-out;
+    z-index:-2
+}
+
+@keyframes grow{
+    0% { transform: scale(1) translateY(0px)}
+    50% { transform: scale(1.2) translateY(-300px)}
 }
 
 /* Main */
 
-.presentation{
-    background-image: url(../images/bg.png);
-    background-size: cover;
-    height: 85vh;
+.main-content{
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2%;
 }
 
-.scene{
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-  
-.card{
-    position: relative;
-    width: 300px;
-    height: 300px;
-    color: white;
-    transition: 1s ease-in-out;
-    transform-style: preserve-3d;
-}
-  
-.card:hover{
-    transform: rotateY(0.5turn);
-}
-  
-.card_face{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transition: 1s ease-in-out;
-    -webkit-box-reflect: below 0
-    linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
-}
-  
-img{
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-}
-  
-.card_faceback{
-    transform: rotateY(0.5turn);
+.main-content h1{
+    font-size: 22px;
 }
 
 /* Footer */
 
 footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: black;
-    bottom: 0; left: 0; right: 0;
 }

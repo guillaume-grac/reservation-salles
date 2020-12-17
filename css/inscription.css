@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+   
+}
+
+/* Header */
+
+nav{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+header{
+    box-shadow: black 0px 5px 7px;
+}
+
+.title-princ,
+.title-princ b{
+    text-shadow: black 1px 2px 1px;
+    font-family: 'Satisfy', cursive;
+    color: #b5d9dd;
+    margin-left: auto;
+    font-size: 60px;  
+}
+
+li a{
+    font-family: 'Poppins', sans-serif;
+    text-shadow: #000000 2px 1px 0px;
+    font-weight: bold;
+    color: #b5d9dd;
+    transition: all 0.3s ease 0.3s;
+}
+
+li a:hover{
+    color: #ffffff;
+}
+
+/* Main */
+
+.loginBox{
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    min-height: 20%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.user{
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 1%;
+}
+
+h1{
+    font-family: 'Satisfy', cursive;
+    margin: 0;
+    padding: 0 0 20px;
+    color: #b5d9dd;
+    text-align: center;
+}
+
+.loginBox input{
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]{ 
+    border: none;
+    border-bottom: 2px solid #262626;
+    outline: none;
+    height: 50px;
+    color: rgb(255, 255, 255);
+    background: transparent;
+    font-size: 20px;
+    padding-left: 2%;
+    box-sizing: border-box;
+    transition: all 0.3s ease 0.3s;
+}
+
+.loginBox input[type="text"]:hover,
+.loginBox input[type="password"]:hover{
+    color: #b5d9dd;
+}
+
+.loginBox input[type="text"]:focus,
+.loginBox input[type="password"]:focus{
+    border-bottom: 2px solid #b5d9dd;
+}
+
+.inputBox{
+    position: relative;
+}
+
+.loginBox input[type="submit"]{
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 14px;
+    background: #b5d9dd;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#label-style{
+    color: #b5d9dd;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.bouton{
+    font-family: 'Poppins', sans-serif; 
+    border-radius: 10px;
+    margin-left: 34%;
+    margin-top: 1%;
+}
+
+/* Footer */
+
+footer{
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
