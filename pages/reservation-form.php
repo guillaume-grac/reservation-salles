@@ -5,8 +5,9 @@ $index = 0;
 
 // CSS
 $boots = "../css/bootstrap.min.css";
-$pageCss = "../css/inscription.css";
-$header_footer = "../css/header_footer.css";
+$pageCss = "../css/reservation-form.css";
+$header = "../css/header.css";
+$footer = "../css/footer.css";
 
 //Liens
 $inscription = "inscription.php";
@@ -17,6 +18,7 @@ $reservationform = "reservation-form.php";
 $reservation = "reservation.php";
 $accueil = "../index.php";
 
-require('../require/html/header_footer.php');
+require('../require/html/header.php');
+require('../require/html/footer.php');
 
 ?>

@@ -90,13 +90,3 @@ li a:hover{
     0% { transform: scale(1) translateY(0px)}
     50% { transform: scale(1.2) translateY(-300px)}
 }
-
-/* Footer */
-
-footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: black;
-}

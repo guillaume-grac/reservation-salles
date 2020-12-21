@@ -8,7 +8,8 @@ $title = "Loc'Sea | Accueil";
 //CSS
 $boots = "css/bootstrap.min.css";
 $pageCss = "css/index.css";
-$header_footer = "css/header_footer.css";
+$header = "css/header.css";
+$footer = "css/footer.css";
 
 //Liens
 $inscription = "pages/inscription.php";
@@ -19,7 +20,8 @@ $reservationform = "pages/reservation-form.php";
 $reservation = "pages/reservation.php";
 $accueil = "index.php";
 
-require('require/html/header_footer.php');
+require('require/html/header.php');
+require('require/html/footer.php');
 
 
 ?>

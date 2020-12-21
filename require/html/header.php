@@ -9,7 +9,8 @@ if($index==1){
         <title>' . $title . '</title>
         <link rel="stylesheet" href=' . $boots . '>
         <link rel="stylesheet" href=' . $pageCss . '>
-        <link rel="stylesheet" href=' . $header_footer . '>
+        <link rel="stylesheet" href=' . $header . '>
+        <link rel="stylesheet" href=' . $footer . '>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     </head>
     <body>
@@ -42,7 +43,8 @@ else{
         <meta charset="UTF-8">
         <title>Loc\'Sea | Accueil</title>
         <link rel="stylesheet" href=' . $boots . '>
-        <link rel="stylesheet" href=' . $header_footer . '>
+        <link rel="stylesheet" href=' . $header . '>
+        <link rel="stylesheet" href=' . $footer . '>
         <link rel="stylesheet" href=' . $pageCss.  '>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     </head>
@@ -66,13 +68,4 @@ else{
         </header>';
 
 }
-
-echo'
-<footer>
-    <section class="footer-copyright text-center py-3">
-        <p><b>© 2020 Copyright : Guillaume G.</b></p>
-    </section>
-    </footer>
-</body>
-</html>'
 ?>
