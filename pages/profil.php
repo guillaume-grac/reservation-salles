@@ -25,17 +25,21 @@ require('../require/html/footer.php');
     <main>
         <section class="container-fluid">
             <section class="loginBox">
-                <h1>Connexion</h1>
+                <h1>Modifier votre profil</h1>
                 <form method="post" action="connexion.php">
                     <section class="inputBox">
-                        <label id="label-style" for="login">Votre Login :</label>
-                        <input type="text" name="login" placeholder="Votre login" required>
+                        <label id="label-style" for="Nlogin">Votre nouveau Login :</label>
+                        <input type="text" name="Nlogin" placeholder="Votre login" required>
                     </section>
                     <section class="inputBox">
-                        <label id="label-style" for="password">Votre mot de passe :</label>
-                        <input type="password" name="password" placeholder="Votre Mot de Passe" required>
+                        <label id="label-style" for="Npassword">Votre nouveau mot de passe :</label>
+                        <input type="password" name="Npassword" placeholder="Votre Mot de Passe" required>
                     </section>
-                    <button type="submit" name="register" class="bouton btn btn-dark">Connexion</button>
+                    <section class="inputBox">
+                        <label id="label-style" for="NCpassword">Confirmez votre nouveau mot de passe :</label>
+                        <input type="password" name="NCpassword" placeholder="Votre Mot de Passe" required>
+                    </section>
+                    <button type="submit" name="register" class="bouton btn btn-dark">Confirmer</button>
                 </form>
             </section>
         </section>

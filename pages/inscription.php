@@ -1,6 +1,5 @@
 <?php 
 
-
 $index = 0;
 
 // CSS
@@ -20,6 +19,21 @@ $accueil = "../index.php";
 
 require('../require/html/header.php');
 require('../require/html/footer.php');
+require('../require/php/classes.php');
+
+//PHP
+
+$Nuser = new userpdo();
+
+
+if (isset($_POST['register'])){
+
+    $login = htmlspecialchars(trim($_POST['login']));
+    $password = htmlspecialchars(trim(password_hash($_POST['password'], PASSWORD_BCRYPT)));
+
+$Nuser->register($_POST['login'], $_POST['password']);
+
+}
 
 ?>
     <main>

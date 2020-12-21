@@ -28,7 +28,7 @@ require('require/html/footer.php');
 
 <main>
     <section class="main-content container-fluid">
-        <h1>Avec Loc'Sea, vivez l'expèrience la plus immersive !</h1><br>
+        <h1><u>Avec Loc'Sea, vivez l'expèrience la plus immersive !</u></h1><br>
         <p>Loc'Sea vous propose des locations de salles de luxe totalement immergées, hors du commun.<br>
         Plusierus salles sont disponibles, chacune adaptées à un type d'évenement précis.<br>
         N'hésitez plus, reservez votre salle et vivez une experience intense et merveilleuse.</p>
