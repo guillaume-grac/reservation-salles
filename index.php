@@ -12,6 +12,7 @@ $header = "css/header.css";
 $footer = "css/footer.css";
 
 //Liens
+$title ="Accueil";
 $inscription = "pages/inscription.php";
 $connexion = "pages/connexion.php";
 $profil = "pages/profil.php";

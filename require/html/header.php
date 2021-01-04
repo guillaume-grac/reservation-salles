@@ -6,7 +6,7 @@ if($index==1){
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>' . $title . '</title>
+        <title>Loc\'Sea |' . $title . '</title>
         <link rel="stylesheet" href=' . $boots . '>
         <link rel="stylesheet" href=' . $pageCss . '>
         <link rel="stylesheet" href=' . $header . '>
@@ -41,7 +41,7 @@ else{
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Loc\'Sea | Accueil</title>
+        <title>Loc\'Sea |' . $title . '</title>
         <link rel="stylesheet" href=' . $boots . '>
         <link rel="stylesheet" href=' . $header . '>
         <link rel="stylesheet" href=' . $footer . '>

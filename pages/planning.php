@@ -10,6 +10,7 @@ $header = "../css/header.css";
 $footer = "../css/footer.css";
 
 //Liens
+$title = " Planning";
 $inscription = "inscription.php";
 $connexion = "connexion.php";
 $profil = "profil.php";

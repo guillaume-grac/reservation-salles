@@ -10,6 +10,7 @@ $header = "../css/header.css";
 $footer = "../css/footer.css";
 
 //Liens
+$titre = " Formulaire de réservation";
 $inscription = "inscription.php";
 $connexion = "connexion.php";
 $profil = "profil.php";

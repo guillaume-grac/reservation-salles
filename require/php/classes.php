@@ -1,64 +1,52 @@
 <?php
 
-class userpdo{
+require_once('Modele.php');
+
+class userpdo extends Modele{
 
     private $id = '';
     public $login = '';
     public $password = '';
-   
 
     public function register($login, $password){
-
-        try{
-            $db = new PDO('mysql:host=localhost; dbname=reservationsalles', 'root', '');
-        }
-        catch (PDOException $e){
-
-            print 'Erreur :' . $e -> getMessage();
-
-            die();
-        }
-
-        //Il manque la vérification de login.
-              
-            $confirm_password=$_POST['confirm-password'];
-
-            if($password === $confirm_password){
-
-            $statement = $db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
+        
+        $statement = $this->db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
             
-            $statement -> execute([
+        $statement -> execute([
 
-                "login"=>$login,
-                "password"=>$password,
-            ]);
-            
-            echo "Vous êtes enregistré !";
-            }
+        "login"=>$login,
+        "password"=>$password,
+        ]);
+    }
+
+    public function find($login){
+
+        $statement = $this->db -> prepare("SELECT login FROM utilisateurs WHERE login =:login");
+
+        $statement -> execute([
+
+            "login"=>$login
+        ]);
+
+        $result = $statement->fetch();
+
+        return $result;
     }
 
     public function connect ($login, $password){
-    
-        try{
-            $db = new PDO('mysql:host=localhost; dbname=reservationsalles', 'root', '');
-        }
-        catch (PDOException $e){
 
-            print 'Erreur :' . $e -> getMessage();
-
-            die();
-        }
+        session_start();
 
         if(isset($login, $password)){
 
-            $verifPass = $db -> prepare("SELECT password FROM utilisateurs WHERE login = :login ");
+            $verifPass = $this->db -> prepare("SELECT password FROM utilisateurs WHERE login = :login ");
             $verifPass->execute([
                 "login"=>$login
             ]);
 
             $count=$verifPass->rowCount();
 
-            $query = $db -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
+            $query = $this ->db -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
             $query->execute([
                 "login"=>$login
             ]);
@@ -74,6 +62,9 @@ class userpdo{
                     $this->id = $user['id'];
                     $this->login = $user['login'];
                     $this->password = $user['password'];
+
+                    $_SESSION['login'] = $login;
+                    $_SESSION['password'] = $password;
                     
                     echo " Bravo connexion réussie <br>";
                 }
@@ -86,58 +77,21 @@ class userpdo{
     }
 
     public function disconnect(){
-        
-        $this->id = null;
-        $this->login = null;
-        $this->password = null;
+
+        if (isset($_POST['logout'])){
+
+            session_destroy();
+            header('location: pages/connexion.php');
+            exit();
+        }
 
         echo "Vous êtes déconnecté <br>";
     }
 
-    public function delete(){
-
-        try{
-            $db = new PDO('mysql:host=localhost; dbname=reservationsalles', 'root', '');
-        }
-        catch (PDOException $e){
-
-            print 'Erreur :' . $e -> getMessage();
-
-            die();
-        }
-
-        $login = $this->login;
-
-        $req = $db -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
-        $req->execute([
-            "login"=>$login
-        ]);
-
-        if($req = true){
-
-        $delete = $db -> prepare("DELETE FROM utilisateurs WHERE login = :login");
-        $delete->execute([
-            "login"=>$login
-        ]);
-
-        echo "Bye Bye <br>";
-
-        }
-    }
 
     public function update($login, $password){
 
-        try{
-            $db = new PDO('mysql:host=localhost; dbname=reservationsalles', 'root', '');
-        }
-        catch (PDOException $e){
-
-            print 'Erreur :' . $e -> getMessage();
-
-            die();
-        }
-
-        $previousLogin = $this-> login;
+        $previousLogin = $this->login;
         
         $login = htmlspecialchars(trim($login));
         $password = password_hash($password, PASSWORD_BCRYPT);
@@ -161,51 +115,6 @@ class userpdo{
             
            return true;
 
-
-        }
-    }
-
-    public function getAllInfos(){
-
-        $login = $this->login;
-        $password = $this->password;
-
-        return[$login,$password];
-
-    }
-
-    public function getLogin(){
-        return ($this->login);
-    }
-
-
-    public function refresh()
-    {
-        try{
-            $db = new PDO('mysql:host=localhost; dbname=reservationsalles', 'root', '');
-        }
-        catch (PDOException $e){
-
-            print 'Erreur :' . $e -> getMessage();
-
-            die();
-        }
-
-        $id = $this -> id;
-
-        $req = $db -> prepare("SELECT * FROM utilisateurs WHERE id = :id");
-        $req->execute([
-            "id"=>$id
-        ]);
-
-        if ($req)
-        {
-            $result = $req->fetch(PDO::FETCH_ASSOC);
-
-            $this ->login = $result['login'];
-            $this ->password = $result['password'];
-
-            return $result;
         }
     }
 }

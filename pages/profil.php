@@ -10,6 +10,7 @@ $header = "../css/header.css";
 $footer = "../css/footer.css";
 
 //Liens
+$title = " Profil";
 $inscription = "inscription.php";
 $connexion = "connexion.php";
 $profil = "profil.php";
@@ -20,13 +21,36 @@ $accueil = "../index.php";
 
 require('../require/html/header.php');
 require('../require/html/footer.php');
+require('../require/php/classes.php');
+
+//PHP
+
+$Nuser = new userpdo();
+
+if (isset($_SESSION['login'])){ 
+    if(isset($_POST['update'])){
+        if(isset($_POST['Nlogin']) && $_POST['Npassword'] === $_POST['NCpassword']){
+
+            $login = htmlspecialchars(trim($_POST['Nlogin']));
+            $password = htmlspecialchars(trim($_POST['Npassword'], PASSWORD_BCRYPT));
+            $confirm_password = htmlspecialchars(trim($_POST['NCpassword']));
+
+
+                $crypted = password_hash($password, PASSWORD_BCRYPT);
+
+                $Nuser->update($login, $crypted);
+            
+            echo 'Utilisateur creer';
+        }
+    }
+}
 
 ?>
     <main>
         <section class="container-fluid">
             <section class="loginBox">
                 <h1>Modifier votre profil</h1>
-                <form method="post" action="connexion.php">
+                <form method="post" action="profil.php">
                     <section class="inputBox">
                         <label id="label-style" for="Nlogin">Votre nouveau Login :</label>
                         <input type="text" name="Nlogin" placeholder="Votre login" required>
@@ -39,7 +63,7 @@ require('../require/html/footer.php');
                         <label id="label-style" for="NCpassword">Confirmez votre nouveau mot de passe :</label>
                         <input type="password" name="NCpassword" placeholder="Votre Mot de Passe" required>
                     </section>
-                    <button type="submit" name="register" class="bouton btn btn-dark">Confirmer</button>
+                    <button type="submit" name="update" class="bouton btn btn-dark">Confirmer</button>
                 </form>
             </section>
         </section>

@@ -10,6 +10,7 @@ $header = "../css/header.css";
 $footer = "../css/footer.css";
 
 //Liens
+$title = " Connexion";
 $inscription = "inscription.php";
 $connexion = "connexion.php";
 $profil = "profil.php";
@@ -20,6 +21,24 @@ $accueil = "../index.php";
 
 require('../require/html/header.php');
 require('../require/html/footer.php');
+require('../require/php/classes.php');
+
+//PHP
+
+$Nuser = new userpdo();
+
+
+if(isset($_POST['connexion'])){
+
+    $login = htmlspecialchars(trim($_POST['login']));
+    $password = htmlspecialchars(trim($_POST['password']));
+
+    $Nuser->connect($login, $password);
+
+    var_dump($_SESSION['login']);
+}
+
+
 
 ?>
     <main>
@@ -35,7 +54,7 @@ require('../require/html/footer.php');
                         <label id="label-style" for="password">Votre mot de passe :</label>
                         <input type="password" name="password" placeholder="Votre Mot de Passe" required>
                     </section>
-                    <button type="submit" name="register" class="bouton btn btn-dark">Connexion</button>
+                    <button type="submit" name="connexion" class="bouton btn btn-dark">Connexion</button>
                 </form>
             </section>
         </section>
