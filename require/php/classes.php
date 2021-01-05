@@ -4,19 +4,41 @@ require_once('Modele.php');
 
 class userpdo extends Modele{
 
-    private $id = '';
-    public $login = '';
-    public $password = '';
 
-    public function register($login, $password){
+    public function register(){
+
+        if(isset($_POST['register'])){
+
+            $login = htmlspecialchars(trim($_POST['login']));
+            $password = htmlspecialchars(trim($_POST['password']));
+            $confirm_password = htmlspecialchars(trim($_POST['confirm-password']));
+            $crypted = password_hash($password, PASSWORD_BCRYPT);
         
-        $statement = $this->db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
-            
-        $statement -> execute([
+            $verifLog = $this->find($login);
+        
+            if($verifLog){
+        
+                echo "Utilisateur existant, veuillez réessayer : <a href ='inscription.php'> ici </a>";
+        
+                die();
+            }
+        
+            if($password === $confirm_password){
 
-        "login"=>$login,
-        "password"=>$password,
-        ]);
+                $statement = $this->db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
+            
+                $statement -> execute([
+                "login"=>$login,
+                "password"=>$crypted
+                ]);
+        
+                echo '<section class="alert alert-success text-center" role="alert"><b>Félicitations !</b> Votre compte a bien été créer.</section>';
+            }
+
+            else{
+                echo'<section class="alert alert-danger text-center" role="alert"><b>Oups !</b> Mot de passe incorect !</section>';
+            }
+        }
     }
 
     public function find($login){
@@ -33,45 +55,49 @@ class userpdo extends Modele{
         return $result;
     }
 
-    public function connect ($login, $password){
+    public function connect (){
 
-        session_start();
+        if(isset($_POST['connexion'])){
 
-        if(isset($login, $password)){
+            $login = htmlspecialchars(trim($_POST['login']));
+            $password = htmlspecialchars(trim($_POST['password']));
 
             $verifPass = $this->db -> prepare("SELECT password FROM utilisateurs WHERE login = :login ");
             $verifPass->execute([
                 "login"=>$login
             ]);
 
-            $count=$verifPass->rowCount();
+            $count=$verifPass->fetch();
 
-            $query = $this ->db -> prepare("SELECT * FROM utilisateurs WHERE login = :login");
-            $query->execute([
-                "login"=>$login
-            ]);
- 
             if($count){
 
-                
-                $user = $query->fetch(PDO::FETCH_ASSOC);
-                $result = $verifPass->fetch(PDO::FETCH_ASSOC);
- 
-                if(password_verify($password, $result['password'])){ 
-                    
-                    $this->id = $user['id'];
-                    $this->login = $user['login'];
-                    $this->password = $user['password'];
+                $check=$count['password'];
 
-                    $_SESSION['login'] = $login;
-                    $_SESSION['password'] = $password;
-                    
-                    echo " Bravo connexion réussie <br>";
+                if(password_verify($password, $check)){ 
+
+                    $query = $this ->db -> prepare("SELECT * FROM utilisateurs WHERE login = :login AND password = :password");
+                    $query->execute([
+                    "login"=>$login,
+                    "password"=>$check
+                    ]);
+
+                    $allInfos = $query->fetch(PDO::FETCH_ASSOC);
+
+                    if($query->rowCount()){
+                        
+                        $_SESSION['id'] = $allInfos['id'];
+                        $_SESSION['login'] = $allInfos['login'];
+                        $_SESSION['password'] = $allInfos['password'];
+
+                    }
+
+                    header('location: ../index.php');
+                    exit();
                 }
+
                 else{
-                    echo " Mauvais MDP <br>";
+                    echo '<section class="alert alert-danger text-center" role="alert"><b>Oups !</b> Mot de passe incorect !</section>';
                 }
-                return $user;
             }
         }
     }
@@ -89,9 +115,9 @@ class userpdo extends Modele{
     }
 
 
-    public function update($login, $password){
+    public function update(){
 
-        $previousLogin = $this->login;
+        /*$previousLogin = $this->login;
         
         $login = htmlspecialchars(trim($login));
         $password = password_hash($password, PASSWORD_BCRYPT);
@@ -102,7 +128,7 @@ class userpdo extends Modele{
             "password"=>$password,
         ]);
        
-        echo "Compte modifié <br>";
+        echo "Compte modifié <br>"; */
     }
 
     public function isConnected(){

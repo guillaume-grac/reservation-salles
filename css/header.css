@@ -25,13 +25,17 @@ header{
     box-shadow: black 0px 5px 7px;
 }
 
+.header2{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 .title-princ,
 .title-princ b{
     text-shadow: black 1px 2px 1px;
     font-family: 'Satisfy', cursive;
     color: #b5d9dd;
-    margin-left: auto;
-    font-size: 60px;  
+    font-size: 60px;
+    margin-left: 40%;
 }
 
 li a{
@@ -50,8 +54,8 @@ li a:hover{
     position: relative;
     overflow :hidden;
     height: 20vw;
-    min-height: 400px;
-    max-height: 550px;
+    min-height: 300px;
+    max-height: 450px;
     min-width: 300px;
     color: #eee;
 }
@@ -81,7 +85,7 @@ li a:hover{
     background: #1B2030 url(../images/salle-bg2.jpg) 50% 0 no-repeat;
     background-size: 100%;
     background-attachment:fixed;
-    animation: grow 60s  linear 10ms infinite;
+    animation: grow 40s  linear 10ms infinite;
     transition:all 0.4s ease-in-out;
     z-index:-2
 }

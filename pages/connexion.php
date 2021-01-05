@@ -1,6 +1,5 @@
 <?php 
 
-
 $index = 0;
 
 // CSS
@@ -25,20 +24,16 @@ require('../require/php/classes.php');
 
 //PHP
 
-$Nuser = new userpdo();
-
-
 if(isset($_POST['connexion'])){
 
-    $login = htmlspecialchars(trim($_POST['login']));
-    $password = htmlspecialchars(trim($_POST['password']));
+    session_start();
 
-    $Nuser->connect($login, $password);
+    $Nuser = new userpdo();
 
-    var_dump($_SESSION['login']);
+    $Nuser->connect();
+
+    var_dump($_SESSION);
 }
-
-
 
 ?>
     <main>

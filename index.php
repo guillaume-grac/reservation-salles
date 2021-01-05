@@ -1,5 +1,14 @@
 <?php 
 
+session_start();
+
+if (isset($_POST['logout'])){
+
+    session_destroy();
+    header('location: pages/connexion.php');
+    exit();
+}
+
 $index = 1;
 
 //Titre

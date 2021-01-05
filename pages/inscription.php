@@ -24,35 +24,11 @@ require('../require/php/classes.php');
 
 //PHP
 
-$Nuser = new userpdo();
-
 if(isset($_POST['register'])){
 
-    $login = htmlspecialchars(trim($_POST['login']));
-    $password = htmlspecialchars(trim($_POST['password'], PASSWORD_BCRYPT));
-    $confirm_password = htmlspecialchars(trim($_POST['confirm-password']));
+    $Nuser = new userpdo();
 
-    $verifLog = $Nuser->find($login);
-
-    if($verifLog){
-
-        echo "Utilisateur existant, veuillez réessayer : <a href ='inscription.php'> ici </a>";
-
-        die();
-    }
-
-    if($password === $confirm_password){
-
-        $crypted = password_hash($password, PASSWORD_BCRYPT);
-
-        $Nuser->register($login, $crypted);
-
-        echo 'Utilisateur creer';
-    }
-    else{
-        echo'ERREUR ENFOIRE';
-    }
-
+    $Nuser->register();
     
 }
 

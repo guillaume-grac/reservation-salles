@@ -1,5 +1,13 @@
 <?php 
 
+session_start();
+
+    if (isset($_POST['logout'])){
+
+        session_destroy();
+        header('location: connexion.php');
+        exit();
+    }
 
 $index = 0;
 
@@ -25,28 +33,21 @@ require('../require/php/classes.php');
 
 //PHP
 
-$Nuser = new userpdo();
+if(isset($_POST['update'])){
 
-if (isset($_SESSION['login'])){ 
-    if(isset($_POST['update'])){
-        if(isset($_POST['Nlogin']) && $_POST['Npassword'] === $_POST['NCpassword']){
+    $Nuser = new userpdo();
 
-            $login = htmlspecialchars(trim($_POST['Nlogin']));
-            $password = htmlspecialchars(trim($_POST['Npassword'], PASSWORD_BCRYPT));
-            $confirm_password = htmlspecialchars(trim($_POST['NCpassword']));
-
-
-                $crypted = password_hash($password, PASSWORD_BCRYPT);
-
-                $Nuser->update($login, $crypted);
-            
-            echo 'Utilisateur creer';
-        }
-    }
+    $Nuser->update();
+    
 }
 
-?>
-    <main>
+$Nuser = new userpdo();
+
+
+
+if(isset($_SESSION['id'])){
+
+    echo '<main>
         <section class="container-fluid">
             <section class="loginBox">
                 <h1>Modifier votre profil</h1>
@@ -67,5 +68,16 @@ if (isset($_SESSION['login'])){
                 </form>
             </section>
         </section>
-    </main>
+    </main>';
+}
+
+else{
+
+    echo'<section class="alert alert-danger text-center alert-co" role="alert"> Vous devez être connecté pour pouvoir voir et modifier votre profil ! <br>
+            <a href="connexion.php" class="alert-link">Connectez-vous ici</a>
+        </section>';
+}
+
+?>
+    
  
