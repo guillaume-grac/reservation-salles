@@ -18,7 +18,7 @@ class userpdo extends Modele{
         
             if($verifLog){
         
-                echo "Utilisateur existant, veuillez réessayer : <a href ='inscription.php'> ici </a>";
+                echo '<section class="alert alert-danger text-center" role="alert"> Cet utilisateur est déjà existant !<br><a href="inscription.php" class="alert-link">Veuillez réessayer ici.</a></section>';
         
                 die();
             }
@@ -32,7 +32,8 @@ class userpdo extends Modele{
                 "password"=>$crypted
                 ]);
         
-                echo '<section class="alert alert-success text-center" role="alert"><b>Félicitations !</b> Votre compte a bien été créer.</section>';
+                header('location: connexion.php');
+                exit();
             }
 
             else{
@@ -117,30 +118,25 @@ class userpdo extends Modele{
 
     public function update(){
 
-        /*$previousLogin = $this->login;
+        $login= htmlspecialchars(trim($_POST['Nlogin']));
+        $password= htmlspecialchars(trim($_POST['Npassword']));
+        $confirmpassword= htmlspecialchars(trim($_POST['NCpassword']));
+        $crypted = password_hash($password, PASSWORD_BCRYPT);
+        $id=$_SESSION['id'];
+
+        if(isset($_POST['update'])){
+            if(isset($_POST['Nlogin']) && $_POST['Npassword'] === $_POST['NCpassword']){
+
+                $previousLogin = $this->login;
+
+                $update = $this->db -> prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE login ='$previousLogin'");
+                $update->execute([
+                "login"=>$login,
+                "password"=>$crypted
+                ]);
         
-        $login = htmlspecialchars(trim($login));
-        $password = password_hash($password, PASSWORD_BCRYPT);
-        
-        $update = $db -> prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE login ='$previousLogin'");
-        $update->execute([
-            "login"=>$login,
-            "password"=>$password,
-        ]);
-       
-        echo "Compte modifié <br>"; */
-    }
-
-    public function isConnected(){
-
-        $login = $this->login;
-
-        if($login){
-           
-            echo " Vous êtes Connecté ";
-            
-           return true;
-
+                echo "Compte modifié <br>";
+            }
         }
     }
 }
