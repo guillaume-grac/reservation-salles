@@ -2,12 +2,12 @@
 
 session_start();
 
-    if (isset($_POST['logout'])){
+if (isset($_POST['logout'])){
 
-        session_destroy();
-        header('location: connexion.php');
-        exit();
-    }
+    $Nuser = new userpdo();
+
+    $Nuser->disconnect();
+}
 
 $index = 0;
 
@@ -38,7 +38,7 @@ if(isset($_POST['update'])){
     $Nuser = new userpdo();
 
     $Nuser->update();
-    
+
 }
 
 ?>

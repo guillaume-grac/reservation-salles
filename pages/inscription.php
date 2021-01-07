@@ -1,5 +1,12 @@
 <?php 
 
+if (isset($_POST['logout'])){
+
+    $Nuser = new userpdo();
+
+    $Nuser->disconnect();
+}
+
 $index = 0;
 
 // CSS

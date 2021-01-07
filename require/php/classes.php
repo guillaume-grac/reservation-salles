@@ -111,34 +111,52 @@ class userpdo extends Modele{
             header('location: pages/connexion.php');
             exit();
         }
-
-        echo "Vous êtes déconnecté <br>";
     }
 
 
     public function update(){
 
-        $login= htmlspecialchars(trim($_POST['Nlogin']));
-        $password= htmlspecialchars(trim($_POST['Npassword']));
-        $confirmpassword= htmlspecialchars(trim($_POST['NCpassword']));
-        $crypted = password_hash($password, PASSWORD_BCRYPT);
-        $id=$_SESSION['id'];
+        if(isset($_SESSION['id'])){
+            if(isset($_POST['update'])){
 
-        if(isset($_POST['update'])){
-            if(isset($_POST['Nlogin']) && $_POST['Npassword'] === $_POST['NCpassword']){
+                    $Nlogin= htmlspecialchars(trim($_POST['Nlogin']));
+                    $Npassword= htmlspecialchars(trim($_POST['Npassword']));
+                    $NCpassword= htmlspecialchars(trim($_POST['NCpassword']));
+                   
+                if($Npassword === $NCpassword){
 
-                $previousLogin = $this->login;
+                    $crypted = password_hash($Npassword, PASSWORD_BCRYPT);
 
-                $update = $this->db -> prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE login ='$previousLogin'");
-                $update->execute([
-                "login"=>$login,
-                "password"=>$crypted
-                ]);
+                    $verifLog = $this->find($Nlogin);
+
+                    if($verifLog){
+                        
+                        echo '<section class="alert alert-danger text-center" role="alert"> Cet utilisateur est déjà existant !<br><a href="profil.php" class="alert-link">Veuillez réessayer ici.</a></section>';
         
-                echo "Compte modifié <br>";
+                        die();
+                    }
+                    else{
+                        $update = $this->db -> prepare("UPDATE utilisateurs SET login = :Nlogin, password = :Npassword WHERE id =:id");
+                        $update->execute([
+                        "Nlogin"=>$Nlogin,
+                        "Npassword"=>$crypted,
+                        "id"=>$_SESSION['id']
+                        ]);
+                    
+                        echo "Compte modifié <br>";
+                    }
+                }
+                else{
+
+                    echo '<section class="alert alert-danger text-center" role="alert"> Les <b>mots de passe</b> ne sont pas identiques.</section>';
+                }
             }
         }
     }
+}
+
+class reservation extends Modele{
+
 }
 
 ?>

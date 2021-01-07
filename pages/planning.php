@@ -1,5 +1,14 @@
 <?php 
 
+session_start();
+
+if (isset($_POST['logout'])){
+
+    $Nuser = new userpdo();
+
+    $Nuser->disconnect();
+}
+
 
 $index = 0;
 
