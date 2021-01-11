@@ -2,14 +2,6 @@
 
 session_start();
 
-if (isset($_POST['logout'])){
-
-    $Nuser = new userpdo();
-
-    $Nuser->disconnect();
-}
-
-
 $index = 0;
 
 // CSS
@@ -30,6 +22,25 @@ $accueil = "../index.php";
 
 require('../require/html/header.php');
 require('../require/html/footer.php');
+require('../require/php/utilisateurs.php');
+require('../require/php/reservations.php');
+
+//PHP
+
+if (isset($_POST['logout'])){
+
+    $Nuser = new userpdo();
+
+    $Nuser->disconnect();
+}
+
+if(isset($_POST['reservation'])){
+
+    $reservations = new Event();
+
+    $reservations->reservation();
+    
+}
 
 ?>
 
@@ -41,18 +52,14 @@ require('../require/html/footer.php');
                 <section class="inputBox">
                     <label id="label-style" for="titre">Titre de la réservation :</label>
                     <input type="text" name="titre" placeholder="Votre réservation" required>
-                
-                
                     <label id="label-style" for="description">Description :</label>
                     <input type="text" name="description" placeholder="Description de la réservation" required>
-                
                     <label id="label-style" for="date1">Date de début :</label>
                     <input type="datetime-local" name="date1" required>
-               
                     <label id="label-style" for="date1">Date de fin :</label>
-                    <input type="datetime-local" name="date1" required>
+                    <input type="datetime-local" name="date2" required>
                 </section> 
-                <button type="submit" name="register" class="bouton btn btn-dark">S'inscrire</button>
+                <button type="submit" name="reservation" class="bouton btn btn-dark">Réserver</button>
             </form>
         </section>
     </section>

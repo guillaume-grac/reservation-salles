@@ -155,8 +155,4 @@ class userpdo extends Modele{
     }
 }
 
-class reservation extends Modele{
-
-}
-
 ?>

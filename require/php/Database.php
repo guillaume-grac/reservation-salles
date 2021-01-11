@@ -17,12 +17,7 @@ class Database{
     
                 die();
             }
-
-            
         }
-
         return self::$instance;
     }
-
-
 }

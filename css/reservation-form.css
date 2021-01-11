@@ -7,7 +7,7 @@
     min-height: 20%;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    padding: 0.5%;
+    padding: 1%;
     box-sizing: border-box;
 }
 
@@ -25,7 +25,8 @@ h1{
 }
 
 .loginBox input[type="text"],
-.loginBox input[type="password"]{ 
+.loginBox input[type="password"],
+.loginBox input[type="datetime-local"]{ 
     border: none;
     border-bottom: 2px solid #262626;
     outline: none;
@@ -74,6 +75,6 @@ h1{
 .bouton{
     font-family: 'Poppins', sans-serif; 
     border-radius: 10px;
-    margin-left: 36%;
+    margin-left: 44%;
     margin-top: 1%;
 }
