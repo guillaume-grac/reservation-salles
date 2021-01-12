@@ -8,9 +8,11 @@ class Event extends Modele{
 
         if(isset($_POST['reservation'])){
 
-            $d = new DateTime('w'); 
+            date_default_timezone_set('UTC');
 
-            if($d->format('w') === 0 || $d->format('w') === 6){
+            $date = new DateTime('2000-01-01');
+
+            if (($heure < "8") && ($heure > "19")){
                 
                 echo "Les réservations ne sont pas disponibles";
                
