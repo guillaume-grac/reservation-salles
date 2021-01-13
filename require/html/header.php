@@ -35,6 +35,7 @@ if($index==1){
                     </section>
                 </nav>
                 <a class="navbar-brand title-princ" href=' . $accueil . '><b>Loc\'Sea</b></a>
+                <img class="jelly2" src="images/jelly.png" alt="meduse-icon">
             </div>
         </header>';
 }
@@ -72,8 +73,10 @@ else{
                     </ul>
                 </section>
             </nav>
-            <a class="navbar-brand title-princ" href=' . $accueil . '><b>Loc\'Sea</b></a>
+            <a class="navbar-brand title-princ2"><b>' . $title . '</b></a>
+            <img class="jelly" src="../images/jelly.png" alt="meduse-icon">
         </header>';
 
 }
 ?>
+ 

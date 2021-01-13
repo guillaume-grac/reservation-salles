@@ -47,7 +47,6 @@ if(isset($_POST['reservation'])){
 <main>
     <section class="container-fluid">
         <section class="loginBox">
-            <h1>Réserver une salle</h1>
             <form method="post" action="reservation-form.php">
                 <section class="inputBox">
                     <label id="label-style" for="titre">Titre de la réservation :</label>
@@ -55,9 +54,13 @@ if(isset($_POST['reservation'])){
                     <label id="label-style" for="description">Description :</label>
                     <input type="text" name="description" placeholder="Description de la réservation" required>
                     <label id="label-style" for="date1">Date de début :</label>
-                    <input type="datetime-local" name="date1" required>
+                    <input type="date" name="date1" required>
+                    <label id="label-style" for="heure1">Heure de début :</label>
+                    <input type="time" name="heure1"  min="08:00" max="19:00" required>
                     <label id="label-style" for="date1">Date de fin :</label>
-                    <input type="datetime-local" name="date2" required>
+                    <input type="date" name="date2" required>
+                    <label id="label-style" for="heure2">Heure de fin :</label>
+                    <input type="time" name="heure2"  min="08:00" max="19:00" required>
                 </section> 
                 <button type="submit" name="reservation" class="bouton btn btn-dark">Réserver</button>
             </form>

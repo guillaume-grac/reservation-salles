@@ -46,7 +46,6 @@ if(isset($_POST['connexion'])){
     <main>
         <section class="container-fluid">
             <section class="loginBox">
-                <h1>Connexion</h1>
                 <form method="post" action="connexion.php">
                     <section class="inputBox">
                         <label id="label-style" for="login">Votre Login :</label>

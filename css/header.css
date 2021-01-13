@@ -11,10 +11,6 @@ html{
     scroll-behavior: smooth;
 }
 
-body{
-    background-color: #e6fcfb;
-}
-
 /* Header */
 
 nav{
@@ -35,8 +31,29 @@ header{
     font-family: 'Satisfy', cursive;
     color: #b5d9dd;
     font-size: 50px;
-    margin-left: 42%;
+    margin-left: 39%;
 }
+
+.title-princ2,
+.title-princ2 b{
+    text-shadow: black 1px 2px 1px;
+    font-family: 'Satisfy', cursive;
+    color: #b5d9dd;
+    font-size: 50px;
+    margin-left: 1%;
+}
+
+.jelly{
+    float: right;
+    width: 5%;
+    margin-right: 2%;
+}
+
+.jelly2{
+    margin-left: 3%;
+    width: 5%;
+}
+
 
 li a{
     font-family: 'Poppins', sans-serif;

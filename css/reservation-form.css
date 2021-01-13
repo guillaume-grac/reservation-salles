@@ -1,6 +1,11 @@
+body{
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+}
+
 .loginBox{
     position: absolute;
-    top: 57%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
@@ -12,21 +17,20 @@
 }
 
 h1{
+    font-size: 26px;
     font-family: 'Satisfy', cursive;
-    margin: 0;
-    padding: 0 0 15px;
     color: #b5d9dd;
     text-align: center;
 }
 
 .loginBox input{
     width: 100%;
-    margin-bottom: 2%;
 }
 
 .loginBox input[type="text"],
 .loginBox input[type="password"],
-.loginBox input[type="datetime-local"]{ 
+.loginBox input[type="date"],
+.loginBox input[type="time"]{ 
     border: none;
     border-bottom: 2px solid #262626;
     outline: none;
@@ -37,6 +41,7 @@ h1{
     padding-left: 2%;
     box-sizing: border-box;
     transition: all 0.3s ease 0.3s;
+    margin: 0.5%;
 }
 
 .loginBox input[type="text"]:hover,
@@ -75,6 +80,6 @@ h1{
 .bouton{
     font-family: 'Poppins', sans-serif; 
     border-radius: 10px;
-    margin-left: 44%;
+    margin-left: 43%;
     margin-top: 1%;
 }

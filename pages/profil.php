@@ -18,7 +18,7 @@ $header = "../css/header.css";
 $footer = "../css/footer.css";
 
 //Liens
-$title = " Profil";
+$title = " Modifier votre Profil";
 $inscription = "inscription.php";
 $connexion = "connexion.php";
 $profil = "profil.php";
@@ -38,7 +38,6 @@ if(isset($_POST['update'])){
     $Nuser = new userpdo();
 
     $Nuser->update();
-
 }
 
 ?>
@@ -46,11 +45,10 @@ if(isset($_POST['update'])){
 <main>
     <section class="container-fluid">
         <section class="loginBox">
-            <h1>Modifier votre profil</h1>
             <form method="post" action="profil.php">
                 <section class="inputBox">
                     <label id="label-style" for="Nlogin">Votre nouveau Login :</label>
-                    <input type="text" name="Nlogin" placeholder="Votre login" required>
+                    <input type="text" name="Nlogin" placeholder="<?php echo $_SESSION['login'];?>" required>
                 </section>
                 <section class="inputBox">
                     <label id="label-style" for="Npassword">Votre nouveau mot de passe :</label>

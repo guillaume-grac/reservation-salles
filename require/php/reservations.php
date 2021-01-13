@@ -8,22 +8,33 @@ class Event extends Modele{
 
         if(isset($_POST['reservation'])){
 
-            date_default_timezone_set('UTC');
+            $titre = htmlspecialchars(trim($_POST['titre']));
+            $description = htmlspecialchars(trim($_POST['description']));
+            $Ddate = $_POST['date1'];
+            $Fdate = $_POST['date2'];
+            $Dtime = $_POST['heure1'];
+            $Ftime = $_POST['heure2'];
+            $id_user = $_SESSION['id'];
 
-            $date = new DateTime('2000-01-01');
+            $d = new DateTime($Ddate);
+            $d2 = new DateTime($Fdate);
 
-            if (($heure < "8") && ($heure > "19")){
+            $t = new DateTime($Dtime);
+            $t2 = new DateTime($Ftime);
+
+            $diff = $t -> diff($t2);
+            $diffStr = $diff -> format('%H:%i:%s');
+
+            if($d -> format('w') == 6 || $d -> format('w') == 0 && $d2 -> format('w') == 6 || $d2 -> format('w') == 0){
                 
-                echo "Les réservations ne sont pas disponibles";
+                echo '<section class="alert alert-danger text-center" role="alert"><b>Attention !</b> Les réservations se font <b>uniquement du lundi au vendredi</b>.</section>';
                
             }
-            else{
-
-                $titre = htmlspecialchars(trim($_POST['titre']));
-                $description = htmlspecialchars(trim($_POST['description']));
-                $Ddate = $_POST['date1'];
-                $Fdate = $_POST['date2'];
-                $id_user = $_SESSION['id'];
+            elseif ($diffStr != '01:0:0')
+            {
+                echo "Vous ne pouvez réservez que pour 1 heure.";
+            }
+            else{ 
                 
                 $statement = $this->db->prepare("INSERT INTO reservations (titre, description, debut, fin, id_utilisateur) VALUES (:titre, :description, :debut, :fin, :id_utilisateur)");
                     
@@ -34,9 +45,8 @@ class Event extends Modele{
                 "fin"=>$Fdate,
                 "id_utilisateur"=>$id_user
                 ]);
-                
-                header('location: reservation-form.php');
-                exit();  
+
+                echo '<section class="alert alert-success text-center" role="alert"><b>Réservation éffectuée</b></section>'; 
             }
         }
     }

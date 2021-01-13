@@ -43,7 +43,6 @@ if(isset($_POST['register'])){
     <main>
         <section class="container-fluid">
             <section class="loginBox">
-                <h1>Inscription</h1>
                 <form method="post" action="inscription.php">
                     <section class="inputBox">
                         <label id="label-style" for="login">Votre Login :</label>
