@@ -12,17 +12,12 @@ class Event extends Modele{
             $description = htmlspecialchars(trim($_POST['description']));
             $Ddate = $_POST['date1'];
             $Fdate = $_POST['date2'];
-            $Dtime = $_POST['heure1'];
-            $Ftime = $_POST['heure2'];
             $id_user = $_SESSION['id'];
 
             $d = new DateTime($Ddate);
             $d2 = new DateTime($Fdate);
 
-            $t = new DateTime($Dtime);
-            $t2 = new DateTime($Ftime);
-
-            $diff = $t -> diff($t2);
+            $diff = $d -> diff($d2);
             $diffStr = $diff -> format('%H:%i:%s');
 
             if($d -> format('w') == 6 || $d -> format('w') == 0 && $d2 -> format('w') == 6 || $d2 -> format('w') == 0){
@@ -30,9 +25,11 @@ class Event extends Modele{
                 echo '<section class="alert alert-danger text-center" role="alert"><b>Attention !</b> Les réservations se font <b>uniquement du lundi au vendredi</b>.</section>';
                
             }
-            elseif ($diffStr != '01:0:0')
-            {
-                echo "Vous ne pouvez réservez que pour 1 heure.";
+            elseif ($diffStr != '01:0:0'){
+                echo '<section class="alert alert-danger text-center" role="alert"><b>Attention !</b> Vous pouvez réservez uniquement pour 1 heure.</section>';
+            }
+            elseif($d -> format('H:i:s') < '08:00:00' || $d -> format('H:i:s') > '19:00:00' && $d2 -> format('H:i:s') < '08:00:00' || $d2 -> format('H:i:s') > '19:00:00'){
+                echo '<section class="alert alert-danger text-center" role="alert"><b>Attention !</b> Vous pouvez uniquement réserver de 8H00 à 19H00.</section>';
             }
             else{ 
                 

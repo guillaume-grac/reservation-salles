@@ -28,8 +28,9 @@ $reservationform = "reservation-form.php";
 $reservation = "reservation.php";
 $accueil = "../index.php";
 
-require('../require/html/header.php');
+
 require('../require/html/footer.php');
 
 ?>
+<?php require('../require/html/header.php'); ?>
 

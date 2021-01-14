@@ -26,7 +26,6 @@ $reservation = "reservation.php";
 $accueil = "../index.php";
 
 require('../require/html/header.php');
-require('../require/html/footer.php');
 require('../require/php/utilisateurs.php');
 
 //PHP
@@ -60,4 +59,6 @@ if(isset($_POST['connexion'])){
             </section>
         </section>
     </main>
+
+    <?php require('../require/html/footer.php'); ?>
   
