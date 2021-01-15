@@ -2,3 +2,28 @@ body{
     background-image: url('../images/bg.jpg');
     background-size: cover;
 }
+
+.planing{
+    margin :auto;
+    margin-top: 1.5%;
+    color : #b5d9dd;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;  
+}
+
+th{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+    width: 200px;   
+}
+
+tr{
+    height: 43px;
+}
+
+.td-hoov:hover{
+    background-color:  #b5d9dd;
+}
