@@ -25,5 +25,6 @@ tr{
 }
 
 .td-hoov:hover{
+    color: black;
     background-color:  #b5d9dd;
 }

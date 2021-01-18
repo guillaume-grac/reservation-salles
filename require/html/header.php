@@ -74,7 +74,7 @@ else{
                 </section>
             </nav>
             <a class="navbar-brand title-princ2"><b>' . $title . '</b></a>
-            <img class="jelly" src="../images/jelly.png" alt="meduse-icon">
+            <img class="jelly floating" src="../images/jelly.png" alt="meduse-icon">
         </header>';
 
 }

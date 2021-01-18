@@ -18,27 +18,29 @@ class userpdo extends Modele{
         
             if($verifLog){
         
-                echo '<section class="alert alert-danger text-center" role="alert"> Cet utilisateur est déjà existant !<br><a href="inscription.php" class="alert-link">Veuillez réessayer ici.</a></section>';
+                echo '<section class="alert alert-danger text-center" role="alert"> Cet utilisateur est <b>déjà existant</b> !</section>';
         
-                die();
             }
-        
-            if($password === $confirm_password){
-
-                $statement = $this->db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
-            
-                $statement -> execute([
-                "login"=>$login,
-                "password"=>$crypted
-                ]);
-        
-                header('location: connexion.php');
-                exit();
-            }
-
             else{
-                echo'<section class="alert alert-danger text-center" role="alert"><b>Oups !</b> Mot de passe incorect !</section>';
-            }
+
+                if($password === $confirm_password){
+
+                    $statement = $this->db -> prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
+                
+                    $statement -> execute([
+                    "login"=>$login,
+                    "password"=>$crypted
+                    ]);
+            
+                    header('location: connexion.php');
+                    exit();
+                    
+                }
+                else{
+
+                    echo'<section class="alert alert-danger text-center" role="alert"><b>Oups !</b> Mot de passe incorect !</section>';
+                }
+            } 
         }
     }
 

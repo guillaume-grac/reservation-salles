@@ -47,6 +47,15 @@ class Event extends Modele{
             }
         }
     }
+
+    public function calendar(){
+
+        $query = $this ->db -> prepare("SELECT * FROM reservations");
+        $query->execute();
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC));
+
+    }
 }
 
 
