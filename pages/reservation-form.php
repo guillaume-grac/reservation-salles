@@ -54,9 +54,9 @@ if(isset($_POST['reservation'])){
                     <label id="label-style" for="description">Description :</label>
                     <input type="text" name="description" placeholder="Description de la réservation" required>
                     <label id="label-style" for="date1">Date de début :</label>
-                    <input type="datetime-local" name="date1" required>
+                    <input type="datetime-local" name="date1" step="3600" required>
                     <label id="label-style" for="date1">Date de fin :</label>
-                    <input type="datetime-local" name="date2" required>
+                    <input type="datetime-local" name="date2" step="3600" required>
                 </section> 
                 <button type="submit" name="reservation" class="bouton btn btn-dark">Réserver</button>
             </form>

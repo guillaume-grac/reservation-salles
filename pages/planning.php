@@ -30,6 +30,12 @@ $accueil = "../index.php";
 
 require('../require/html/header.php');
 
+//Utilisation de la méthode classique après plusieurs essais non concluants en classes et poo : 
+
+$connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
+$requete = "SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur";
+$query = mysqli_query($connexion, $requete);
+$resultat = mysqli_fetch_all($query);
 
 
 ?>
@@ -48,97 +54,17 @@ require('../require/html/header.php');
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>8H à 9H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>9h à 10H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                 <tr>
-                    <td>10H à 11H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov">aaa</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                 </tr>  
-                <tr>
-                    <td>11H à 12H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>12H à 13H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>13H à 14H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>14H à 15H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>15H à 16H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>16H à 17H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>17H à 18H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
-                <tr>
-                    <td>18H à 19H</td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                    <td class="td-hoov"></td>
-                </tr>
+                <?php include("table.php"); ?>
             </tbody>
         </table>
-    </section>
+    </section>  
 </main>
+<footer>
+</footer>
+    <script src="../js/fullcalendar/core/main.js"></script>
+    <script src="../js/fullcalendar/daygrid/main.js"></script>
+    <script src="../js/fullcalendar/timegrid/main.js"></script>
+    <script src="../js/script.js"></script> 
+</body>
+</html>
 
-<?php require('../require/html/footer.php'); ?>
