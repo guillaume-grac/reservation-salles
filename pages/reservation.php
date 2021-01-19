@@ -38,19 +38,7 @@ require('../require/php/reservations.php');
 <?php
 
 if(isset($_GET)){
-    echo '
-    <table>
-        <thead>
-            <th>Hello</th>
-        </thead>
-        <tr>
-            <td>Uh oh</td>
-        </tr>
-        <tr>
-            <td>Uhhhh</td>
-        </tr>
-    </table>
-    ';
+    echo ' '. $_GET['id'] .' ';
 }
 ?>
 
