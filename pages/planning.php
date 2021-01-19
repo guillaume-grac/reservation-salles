@@ -29,14 +29,15 @@ $reservation = "reservation.php";
 $accueil = "../index.php";
 
 require('../require/html/header.php');
+require('../require/php/utilisateurs.php');
+require('../require/php/reservations.php');
 
-//Utilisation de la méthode classique après plusieurs essais non concluants en classes et poo : 
+//Pour "Planning" j'ai utiliser la méthode classique après plusieurs essais non concluants et quelques difficultés en classes et poo : 
 
 $connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
 $requete = "SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur";
 $query = mysqli_query($connexion, $requete);
 $resultat = mysqli_fetch_all($query);
-
 
 ?>
 
@@ -61,10 +62,6 @@ $resultat = mysqli_fetch_all($query);
 </main>
 <footer>
 </footer>
-    <script src="../js/fullcalendar/core/main.js"></script>
-    <script src="../js/fullcalendar/daygrid/main.js"></script>
-    <script src="../js/fullcalendar/timegrid/main.js"></script>
-    <script src="../js/script.js"></script> 
 </body>
 </html>
 

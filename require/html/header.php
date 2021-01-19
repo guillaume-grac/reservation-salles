@@ -28,10 +28,10 @@ if($index==1){
                             echo'
                         </ul>
                         <ul class="navbar-nav ml-auto salles">
-                            <li class="nav-item"><a class="nav-link" href=' . $planning . '>| <i class="far fa-calendar-alt"></i> Planning</a></li>
-                            <li class="nav-item"><a class="nav-link" href=' . $reservationform . '>| <i class="far fa-calendar-plus"></i> Reserver</a></li>
-                            <li class="nav-item"><a class="nav-link" href=' . $reservation . '>| <i class="far fa-calendar-check"></i> Les réservations</a></li>
-                        </ul>
+                        <li class="nav-item"><a class="nav-link" href=' . $planning . '>| <i class="far fa-calendar-alt"></i> Planning</a></li>';
+                        if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link" href=' . $reservationform . '>| <i class="far fa-calendar-plus"></i> Reserver</a></li>';}
+                        echo'
+                    </ul>
                     </section>
                 </nav>
                 <a class="navbar-brand title-princ" href=' . $accueil . '><b>Loc\'Sea</b></a>
@@ -67,9 +67,9 @@ else{
                         echo'
                     </ul>
                     <ul class="navbar-nav ml-auto salles">
-                        <li class="nav-item"><a class="nav-link" href=' . $planning . '>| <i class="far fa-calendar-alt"></i> Planning</a></li>
-                        <li class="nav-item"><a class="nav-link" href=' . $reservationform . '>| <i class="far fa-calendar-plus"></i> Reserver</a></li>
-                        <li class="nav-item"><a class="nav-link" href=' . $reservation . '>| <i class="far fa-calendar-check"></i> Les réservations</a></li>
+                        <li class="nav-item"><a class="nav-link" href=' . $planning . '>| <i class="far fa-calendar-alt"></i> Planning</a></li>';
+                        if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link" href=' . $reservationform . '>| <i class="far fa-calendar-plus"></i> Reserver</a></li>';}
+                        echo'
                     </ul>
                 </section>
             </nav>

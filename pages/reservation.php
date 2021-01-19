@@ -28,9 +28,32 @@ $reservationform = "reservation-form.php";
 $reservation = "reservation.php";
 $accueil = "../index.php";
 
-
-require('../require/html/footer.php');
+require('../require/html/header.php');
+require('../require/php/utilisateurs.php');
+require('../require/php/reservations.php');
 
 ?>
-<?php require('../require/html/header.php'); ?>
 
+<main>
+<?php
+
+if(isset($_GET)){
+    echo '
+    <table>
+        <thead>
+            <th>Hello</th>
+        </thead>
+        <tr>
+            <td>Uh oh</td>
+        </tr>
+        <tr>
+            <td>Uhhhh</td>
+        </tr>
+    </table>
+    ';
+}
+?>
+
+</main>
+
+<?php require('../require/html/footer.php'); ?>

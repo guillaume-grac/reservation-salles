@@ -12,21 +12,27 @@ body{
     border-radius: 10px;  
 }
 
+.planing a{
+    color : #b5d9dd;
+    text-decoration: none;
+}
+
+.planing a:hover{
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
 th{
     text-align: center;
 }
 
 td{
+    
     text-align: center;
     width: 200px;   
 }
 
 tr{
     height: 43px;
-}
-
-.td-hoov:hover{
-    color: black;
-    background-color:  #b5d9dd;
 }
 
