@@ -32,6 +32,10 @@ td{
     width: 200px;   
 }
 
+.libre{
+    color: rgb(65, 58, 58);
+}
+
 tr{
     height: 43px;
 }

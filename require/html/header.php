@@ -24,7 +24,7 @@ if($index==1){
                             if (!isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link" href=' . $connexion . '>| <i class="fas fa-user-check"></i> Connexion</a></li>';}
                             if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link" href=' . $profil . '>| <i class="fas fa-user-cog"></i> Profil</a></li>';}
                             if (isset($_SESSION['login'])){ echo '<li><form method="POST" action="index.php"><button type="submit" class="btn btn-info" name="logout" title="Déconnexion"><i class="fas fa-power-off"></i></button></form></li>';}
-                            if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link"> Bonjour <i class="fas fa-user-circle"></i> ' . $_SESSION['login'] . '</a></li>';}
+                            if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link"> Bonjour <i class="fas fa-user-circle"></i> ' . ucfirst($_SESSION['login']) . '</a></li>';}
                             echo'
                         </ul>
                         <ul class="navbar-nav ml-auto salles">
@@ -63,7 +63,7 @@ else{
                         if (!isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link"  href=' . $connexion . '>| <i class="fas fa-user-check"></i> Connexion</a></li>';}
                         if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link" href=' . $profil . '>| <i class="fas fa-user-cog"></i> Profil</a></li>';}
                         if (isset($_SESSION['login'])){ echo '<li><form method="POST" action="../index.php"><button type="submit" class="btn btn-info" name="logout" title="Déconnexion"><i class="fas fa-power-off"></i></button></form></li>';}
-                        if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link">Bonjour <i class="fas fa-user-circle"></i> ' . $_SESSION['login'] . '</a></li>';}
+                        if (isset($_SESSION['login'])){ echo '<li class="nav-item"><a class="nav-link">Bonjour <i class="fas fa-user-circle"></i> ' . ucfirst($_SESSION['login']) . '</a></li>';}
                         echo'
                     </ul>
                     <ul class="navbar-nav ml-auto salles">

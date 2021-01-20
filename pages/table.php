@@ -1,6 +1,6 @@
 <?php
 
-// Fonction qui relie ma bdd et mes données à mon tableau
+// Fonction qui relie ma bdd et mes données à mon tableau en méthode classique (sans utilisé la POO)
 
 function isdateok($heurecasebegin, $connexion, $lecturebdd, $jour){
 
@@ -156,18 +156,18 @@ while ($i < 11){
 
                                     if(isset($_SESSION['login'])){
 
-                                        echo "<td><a class=\"lien-event\" href=\"reservation.php?id=$idevent\"><div>" . $resultatevent[0][1] . "<br />Organisateur: " . $resultatevent[0][0] . "<br /></div></a></td>";
+                                        echo "<td><a class=\"lien-event\" href=\"reservation.php?id=$idevent\"><div>" . ucfirst($resultatevent[0][1]) . "<br />De : " . ucfirst($resultatevent[0][0]) . "<br /></div></a></td>";
                                     }
                                     else{
-                                        echo "<td><div>" . $resultatevent[0][1] . "<br />Organisateur: " . $resultatevent[0][0] . "<br /></div></td>";
+                                        echo "<td><div>" . ucfirst($resultatevent[0][1]) . "<br />De : " . ucfirst($resultatevent[0][0]) . "<br /></div></td>";
                                     }
-                                } 
+                                }
                                 else{
-                                    echo "<td>" . "<a href=\"reservation-form.php\"><div></div></a>" . "</td>";
+                                    echo "<td class='libre'>Crénaux disponible</td>";
                                 }
                             } 
                             else{
-                                    echo "<td . \"<a href=\"reservation-form.php\"><div></div></a>" . "</td>";
+                                    echo "<td class='libre'>Crénaux disponible</td>";
                             }
                                 
                             unset($isokevent);

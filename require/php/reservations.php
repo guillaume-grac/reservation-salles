@@ -47,6 +47,32 @@ class Event extends Modele{
             }
         }
     }
+
+    /* public function affichageTitre(){
+ 
+        $affichage = $this->db->prepare('SELECT COLUMNS titre, description, debut, fin, id_utilisateur FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME="reservations"'); 
+        
+        $affichage->execute();
+
+        $result= $affichage->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+
+    } */
+
+    public function affichageContenu(){
+
+        $id = $_GET['id'];
+
+        $affichage2 = $this->db->prepare("SELECT titre, description, debut, fin FROM reservations WHERE id = :id");
+
+        $affichage2->execute(["id"=>$id]);
+
+        $result2= $affichage2->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result2;
+        
+    }
 }
 
 ?>
