@@ -3,3 +3,25 @@ body{
     background-size: cover;
 }
 
+table{
+    margin :auto;
+    margin-top: 10%;
+    color : #b5d9dd;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;  
+}
+
+th{
+    text-align: center;
+    text-decoration: underline;
+}
+
+td{
+    
+    text-align: center;
+    width: 200px;   
+}
+
+tr{
+    height: 43px;
+}

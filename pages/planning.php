@@ -32,12 +32,18 @@ require('../require/html/header.php');
 require('../require/php/utilisateurs.php');
 require('../require/php/reservations.php');
 
-//Pour "Planning" j'ai utiliser la méthode classique après plusieurs essais non concluants et quelques difficultés en classes et poo : 
+ 
+/* ANCIENNE METHODE FONCTIONNELLE :
 
 $connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
 $requete = "SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur";
 $query = mysqli_query($connexion, $requete);
 $resultat = mysqli_fetch_all($query);
+*/
+
+$calendar = new Event;
+
+$calendar->calend();
 
 ?>
 
@@ -55,7 +61,10 @@ $resultat = mysqli_fetch_all($query);
                 </tr>
             </thead>
             <tbody>
-                <?php include("table.php"); ?>
+                <?php 
+                    //include("table.php"); 
+                    $calendar->Calendar();
+                ?>
             </tbody>
         </table>
     </section>  

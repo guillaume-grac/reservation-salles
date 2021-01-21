@@ -1,6 +1,6 @@
 <?php
-
-// Fonction qui relie ma bdd et mes données à mon tableau en méthode classique (sans utilisé la POO)
+/*
+// Fonction qui relie ma bdd et mes données à mon tableau en méthode classique (sans utilisé la POO), je ne passe donc pas par ma classe. 
 
 function isdateok($heurecasebegin, $connexion, $lecturebdd, $jour){
 
