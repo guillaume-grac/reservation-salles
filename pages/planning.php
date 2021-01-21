@@ -32,15 +32,6 @@ require('../require/html/header.php');
 require('../require/php/utilisateurs.php');
 require('../require/php/reservations.php');
 
- 
-/* ANCIENNE METHODE FONCTIONNELLE :
-
-$connexion = mysqli_connect("localhost", "root", "", "reservationsalles");
-$requete = "SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur";
-$query = mysqli_query($connexion, $requete);
-$resultat = mysqli_fetch_all($query);
-*/
-
 $calendar = new Event;
 
 $calendar->calend();
@@ -62,7 +53,6 @@ $calendar->calend();
             </thead>
             <tbody>
                 <?php 
-                    //include("table.php"); 
                     $calendar->Calendar();
                 ?>
             </tbody>

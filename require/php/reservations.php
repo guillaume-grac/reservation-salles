@@ -70,9 +70,6 @@ class Event extends Modele{
 
     }
 
-
-//'SELECT * FROM reservations WHERE WEEK(debut) = WEEK(CURDATE()) AND ("08:00:00" BETWEEN DATE_FORMAT(debut, "%T") AND DATE_FORMAT(fin, "%T")) AND ("Wednesday" BETWEEN DATE_FORMAT(debut, "%W") AND DATE_FORMAT(fin, "%W"))' (length=217)
-//SELECT * FROM reservations WHERE WEEK(debut) = WEEK(CURDATE()) AND (11 BETWEEN DATE_FORMAT(debut, %T) AND DATE_FORMAT(fin, %T)) AND ('Monday' BETWEEN DATE_FORMAT(debut, %W) AND DATE_FORMAT(fin, %W))
     public function isdateok($heurecasebegin, $jour){
 
         $query = "SELECT * FROM reservations WHERE WEEK(debut) = WEEK(CURDATE()) AND (:heurecasebegin BETWEEN DATE_FORMAT(debut,\"%T\") AND DATE_FORMAT(fin, \"%T\")) AND (:jour BETWEEN DATE_FORMAT(debut, \"%W\") AND DATE_FORMAT(fin, \"%W\"))";
@@ -84,8 +81,6 @@ class Event extends Modele{
         $requeteisokdate->execute();
     
         $resultatok = $requeteisokdate->fetch(PDO::FETCH_ASSOC);
-
-            var_dump($resultatok);
 
         if (!empty($resultatok)){
             
@@ -226,22 +221,22 @@ class Event extends Modele{
 
                                     if ($isokevent == true){
 
-                                        $requeteevent = $this->db->prepare("SELECT login, titre, reservations.id FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE (:heured BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(debut, \"%W\")=:jour AND WEEK(debut) = WEEK(CURDATE())");
+                                        $requeteevent = $this->db->prepare("SELECT login, titre, reservations.id FROM reservations LEFT JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE (:heured BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(fin, \"%T\")) AND (:heuref BETWEEN DATE_FORMAT(debut, \"%T\") AND DATE_FORMAT(fin, \"%T\")) AND DATE_FORMAT(debut, \"%W\")=:jour AND WEEK(debut) = WEEK(CURDATE()) OR DATE_FORMAT(fin, \"%T\")=:heuref AND DATE_FORMAT(debut, \"%W\")=:jour AND WEEK(debut) = WEEK(CURDATE())");
                                         $requeteevent->bindParam(':heured', $heured, PDO::PARAM_INT);
-                                        
+                                        $requeteevent->bindParam(':heuref', $heured, PDO::PARAM_INT);
                                         $requeteevent->bindParam(':jour', $jour, PDO::PARAM_STR);
 
                                         $requeteevent->execute();
 
+                                        $resultatevent = $requeteevent->fetchAll();
+                                          
                                         
-                                        
-                                
-                                        $requeteisokdate = $requeteevent->fetchAll(PDO::FETCH_ASSOC);
-                                                            
-                                        if (!empty($resultatevent)){
+                                        if (isset($resultatevent)==true){
+
+                                            var_dump($resultatevent);
 
                                             $idevent = $resultatevent[0][2];
-
+                                            
                                             if(isset($_SESSION['login'])){
 
                                                 echo "<td><a class=\"lien-event\" href=\"reservation.php?id=$idevent\"><div>" . ucfirst($resultatevent[0][1]) . "<br />De : " . ucfirst($resultatevent[0][0]) . "<br /></div></a></td>";
