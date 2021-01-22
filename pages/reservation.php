@@ -44,19 +44,20 @@ require('../require/php/reservations.php');
         <tbody>
             <tr>
 
-<?php
+            <?php
 
-    $reservations = new Event();
-    $contain = $reservations->affichageContenu();
+                $reservations = new Event();
+                $contain = $reservations->affichageContenu();
 
-    foreach ($contain as $result){
-        foreach ($result as $key => $value){
-            echo '<td>' .$value.'</td>';
-        }
-    }
+                foreach ($contain as $result){
+                    foreach ($result as $key => $value){
+                        echo '<td>' .$value.'</td>';
+                    }
+                }
 
 
-?>
+            ?>
+            
             <td><?php echo ucfirst($_SESSION['login']) ?></td>
             </tr>
         </tbody>  

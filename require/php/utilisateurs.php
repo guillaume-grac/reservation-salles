@@ -145,7 +145,7 @@ class userpdo extends Modele{
                         "id"=>$_SESSION['id']
                         ]);
                     
-                        echo "Compte modifié <br>";
+                        echo '<section class="alert alert-success text-center" role="alert"><b>Compte modifié avec succés.</b></section>';
                     }
                 }
                 else{

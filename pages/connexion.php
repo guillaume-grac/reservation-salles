@@ -37,8 +37,6 @@ if(isset($_POST['connexion'])){
     $Nuser = new userpdo();
 
     $Nuser->connect();
-
-    var_dump($_SESSION);
 }
 
 ?>
