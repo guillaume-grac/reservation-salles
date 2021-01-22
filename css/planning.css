@@ -10,6 +10,7 @@ body{
     color : #b5d9dd;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;  
+    
 }
 
 .planing a{
@@ -23,11 +24,11 @@ body{
 }
 
 th{
+    height: 18px;
     text-align: center;
 }
 
 td{
-    
     text-align: center;
     width: 200px;   
 }
@@ -37,6 +38,7 @@ td{
 }
 
 tr{
-    height: 43px;
+    height: 14px;
 }
+
 

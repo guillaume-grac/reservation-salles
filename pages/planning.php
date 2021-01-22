@@ -32,9 +32,9 @@ require('../require/html/header.php');
 require('../require/php/utilisateurs.php');
 require('../require/php/reservations.php');
 
-$calendar = new Event;
 
-$calendar->calend();
+
+$calendar = new Event;
 
 ?>
 
@@ -53,7 +53,22 @@ $calendar->calend();
             </thead>
             <tbody>
                 <?php 
-                    $calendar->Calendar();
+                
+                for($heure = 8 ; $heure <= 18 ; $heure++){
+
+                    echo '<tr></tr>';
+
+                    for($jour = 0 ; $jour <= 5 ; $jour++){
+
+                        if($jour == 0){
+
+                            echo '<td>' .$heure.'h </td>';
+                        }
+                        else{
+                            $calendar->planning($jour,$heure);
+                        }
+                    }
+                }
                 ?>
             </tbody>
         </table>
